@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temple Album</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- CSS: mobile first -->
+    <link rel="stylesheet" href="styles/temple.css">
+    <link rel="stylesheet" href="styles/temple-large.css">
+    <!-- JavaScript deferred -->
+    <script src="scripts/temple.js+" defer></script>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="site-title">Temple Album</div>
+            <button id="hamburger" class="hamburger" aria-label="Menu">☰</button>
+        </div>
+        <nav id="nav-menu" class="nav-menu">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Old</a></li>
+                <li><a href="#">New</a></li>
+                <li><a href="#">Large</a></li>
+                <li><a href="#">Small</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Home</h1>   <!-- changed from "Temple Album" to match screenshot -->
+        <div class="gallery">
+            <figure>
+                <img src="images/aba_nigeria_temple_lds (1).jpeg" alt="San Diego California Temple">
+                <figcaption>San Diego California</figcaption>
+            </figure>
+            <figure>
+                <img src="images/bogota_colombia_temple_lds (1).jpeg" alt="Los Angeles California Temple">
+                <figcaption>Los Angeles California</figcaption>
+            </figure>
+            <figure>
+                <img src="images/boise_idaho_temple.jpeg" alt="Salt Lake City Utah Temple">
+                <figcaption>Salt Lake City Utah</figcaption>
+            </figure>
+            <figure>
+                <img src="images/buenos_aires_argentina_temple (1).jpeg" alt="Provo Utah Temple">
+                <figcaption>Provo Utah</figcaption>
+            </figure>
+            <figure>
+                <img src="images/ciudad_juarez_mexico_temple_lds.jpeg" alt="Rome Italy Temple">
+                <figcaption>Rome Italy</figcaption>
+            </figure>
+            <figure>
+                <img src="images/coban_guatemala_temple_exteriors.png" alt="Tokyo Japan Temple">
+                <figcaption>Tokyo Japan</figcaption>
+            </figure>
+            <figure>
+                <img src="images/philippines_cebu_temple.png" alt="London England Temple">
+                <figcaption>London England</figcaption>
+            </figure>
+            <figure>
+                <img src="images/rendering_arequipa_peru_temple.jpeg" alt="Paris France Temple">
+                <figcaption>Paris France</figcaption>
+            </figure>
+        </div>
+    </main>
+
+    <footer>
+        <p>
+            ©<span id="currentyear"></span> © <a href="#">Odono John Jachukwu</a> © Nigeria<br>
+            Last Modification: <span id="lastModified"></span>
+        </p>
+    </footer>
+</body>
+</html>

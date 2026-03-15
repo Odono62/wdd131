@@ -1,0 +1,47 @@
+@media screen and (min-width: 640px) {
+    /* Hide hamburger */
+    .hamburger {
+        display: none;
+    }
+
+    /* Make header flex row with title and nav inline */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    .header-top {
+        width: auto; /* take only needed space */
+    }
+
+    .nav-menu {
+        display: flex !important; /* override mobile hide */
+    }
+
+    .nav-menu ul {
+        display: flex;
+        gap: 1rem;
+        margin: 0;
+        list-style: none;
+    }
+
+    .nav-menu li {
+        margin: 0;
+    }
+
+    .nav-menu a {
+        padding: 0.5rem 1rem;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns on larger screens */
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .gallery {
+        grid-template-columns: repeat(4, 1fr); /* 4 columns on very large screens */
+    }
+}

@@ -1,0 +1,13 @@
+@media screen and (min-width: 500px) {
+    /* Add your CSS rules here for screens 500px and wider */
+    /* Example: Adjust layout for larger screens */
+    .cards {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .card {
+        flex: 1;
+        margin: 0 10px;
+    }
+}

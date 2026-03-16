@@ -1,10 +1,8 @@
 @media screen and (min-width: 640px) {
-    /* Hide hamburger */
     .hamburger {
         display: none;
     }
 
-    /* Make header flex row with title and nav inline */
     header {
         display: flex;
         justify-content: space-between;
@@ -13,11 +11,11 @@
     }
 
     .header-top {
-        width: auto; /* take only needed space */
+        width: auto;
     }
 
     .nav-menu {
-        display: flex !important; /* override mobile hide */
+        display: flex !important;
     }
 
     .nav-menu ul {
@@ -36,12 +34,12 @@
     }
 
     .gallery {
-        grid-template-columns: repeat(3, 1fr); /* 3 columns on larger screens */
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media screen and (min-width: 1024px) {
     .gallery {
-        grid-template-columns: repeat(4, 1fr); /* 4 columns on very large screens */
+        grid-template-columns: repeat(4, 1fr);
     }
 }

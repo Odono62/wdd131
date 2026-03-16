@@ -38,7 +38,7 @@ header {
 }
 
 .nav-menu {
-    display: none; /* hidden by default in mobile */
+    display: none;
 }
 
 .nav-menu.show {
@@ -81,7 +81,7 @@ h1 {
 
 .gallery {
     display: grid;
-    grid-template-columns: 1fr; /* single column on mobile */
+    grid-template-columns: 1fr;
     gap: 1rem;
 }
 

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>country-page</title>
+  <meta name="description" content="Discover Madagascar: geography, culture, and current weather insights">
+  <link rel="stylesheet" href="styles/place.css">
+  <script src="scripts/Place.js" defer></script>
+</head>
+<body>
+  <div class="page-container">
+    <main class="country-card">
+      <!-- Place Title -->
+      <h1 class="country-title">nigeria</h1>
+
+      <!-- Small Image (representative of the country) -->
+      <figure class="hero-image">
+        <img 
+          src="images/place.jpg" 
+          alt="Satellite view of nigeria"
+          class="country-img"
+          loading="eager"
+        >
+        <figcaption class="img-caption">Nigeria is a powerful, complex, and fast-growing country full of opportunity and challenges—where culture is rich, people are driven, and the future holds massive potential.</figcaption>
+      </figure>
+      <h2>About</h2>
+      </p>
+
+      <!-- Two-column layout (Data + Weather) for wider screens -->
+      <div class="info-grid">
+        <!-- DATA SECTION -->
+        <section class="data-section card">
+          <h2 class="section-heading">📊 Data</h2>
+          <div class="data-list">
+            <div class="data-item"><span class="label">Area:</span><span class="value">587,041 sq km</span></div>
+            <div class="data-item"><span class="label">Population:</span><span class="value">200,000,000</span></div>
+            <div class="data-item"><span class="label">Capital:</span><span class="value">fct, abuja</span></div>
+            <div class="data-item"><span class="label">Languages:</span><span class="value">igbo, yuroba, and hausa</span></div>
+            <div class="data-item"><span class="label">Currency:</span><span class="value">nigeria</span></div>
+            <div class="data-item"><span class="label">Time Zone:</span><span class="value">UTC+1</span></div>
+            <div class="data-item"><span class="label">Calling Code:</span><span class="value">+234</span></div>
+            <div class="data-item"><span class="label">Internet TLD:</span><span class="value">.NG</span></div>
+          </div>
+        </section>
+
+        <!-- WEATHER SECTION (dynamic content via JS) -->
+        <section class="weather-section card">
+          <h2 class="section-heading weather-heading">🌤️ Weather</h2>
+          <div class="weather-details">
+            <div class="weather-item"><span class="label">Temperature:</span><span id="temp-value" class="value">--°C</span></div>
+            <div class="weather-item"><span class="label">Conditions:</span><span id="conditions" class="value">Partly Cloudy</span></div>
+            <div class="weather-item"><span class="label">Wind Speed:</span><span id="wind-speed" class="value">-- km/h</span></div>
+            <div class="weather-item"><span class="label">Wind Chill:</span><span id="windchill-value" class="value">--</span></div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- STANDARD FOOTER (copyright, name, location, last modified) -->
+    <footer class="page-footer">
+      <div class="footer-content">
+        <p>© <span id="current-year"></span> 🛈 odono john jachukwu 🛈 nigeria</p>
+        <p class="last-modify">Last Modification: <span id="last-modified"></span></p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

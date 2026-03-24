@@ -1,0 +1,249 @@
+/* ===== GLOBAL CSS VARIABLES (Color scheme inspired by Madagascar flag) ===== */
+:root {
+  --primary-red: #CF3A2E;      /* red from flag */
+  --primary-green: #007E3A;    /* green from flag */
+  --neutral-white: #FEF9F0;
+  --neutral-dark: #2C2C2C;
+  --accent-gold: #F5B042;
+  --gray-light: #F0F0F0;
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --border-radius: 20px;
+  --font-heading: 'Segoe UI', 'Roboto', system-ui, sans-serif;
+  --font-body: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  --transition: all 0.2s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(145deg, #f4f2ed 0%, #e8e4dc 100%);
+  font-family: var(--font-body);
+  color: var(--neutral-dark);
+  line-height: 1.5;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ===== CARD & MAIN LAYOUT ===== */
+.country-card {
+  background: var(--neutral-white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  padding: 1.8rem 1.5rem 2rem;
+  transition: var(--transition);
+}
+
+.country-title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-align: center;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.5px;
+}
+
+/* Hero image (small image per wireframe) */
+.hero-image {
+  margin-bottom: 2rem;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.country-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.country-img:hover {
+  transform: scale(1.02);
+}
+
+.img-caption {
+  font-size: 0.8rem;
+  text-align: center;
+  color: #5a5a5a;
+  padding: 0.5rem;
+  background: #f9f7f2;
+  font-style: italic;
+}
+
+/* ===== DATA + WEATHER GRID (mobile first, single column) ===== */
+.info-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.card {
+  background: white;
+  border-radius: 28px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: var(--transition);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.section-heading {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+  border-left: 6px solid var(--primary-red);
+  padding-left: 1rem;
+  color: #1f2a2e;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Data list styling */
+.data-list, .weather-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.data-item, .weather-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  padding: 0.4rem 0;
+  border-bottom: 1px dashed #e2e0d8;
+}
+
+.label {
+  font-weight: 600;
+  color: var(--primary-green);
+  background: #f0f9f0;
+  padding: 0.2rem 0.8rem;
+  border-radius: 40px;
+  font-size: 0.85rem;
+  letter-spacing: 0.3px;
+}
+
+.value {
+  font-weight: 500;
+  color: #2c3e2f;
+  text-align: right;
+  word-break: break-word;
+}
+
+/* Footer styles */
+.page-footer {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.85rem;
+  background: rgba(44, 44, 44, 0.05);
+  backdrop-filter: blur(2px);
+  border-radius: 40px;
+  padding: 1rem 1.5rem;
+  color: #3b3b3b;
+  border-top: 1px solid #e0d6ca;
+}
+
+.footer-content p {
+  margin: 0.25rem 0;
+}
+
+.last-modify {
+  font-family: monospace;
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+/* ===== MEDIA QUERY: WIDER VIEW (≥ 768px) ===== */
+@media (min-width: 768px) {
+  body {
+    padding: 2rem 2rem;
+  }
+
+  .country-card {
+    padding: 2rem 2rem 2rem;
+  }
+
+  .country-title {
+    font-size: 3.2rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Two-column grid layout (wireframe wide view) */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+
+  .card {
+    padding: 1.8rem;
+  }
+
+  /* Pseudo-element for weather icon (wide view only, after heading) */
+  .weather-heading::after {
+    content: "🌦️";
+    display: inline-block;
+    margin-left: 12px;
+    font-size: 1.9rem;
+    vertical-align: middle;
+    transition: transform 0.2s;
+  }
+
+  .weather-heading:hover::after {
+    transform: rotate(8deg);
+  }
+
+  /* Better spacing for data items */
+  .data-item, .weather-item {
+    padding: 0.5rem 0;
+  }
+
+  .label {
+    font-size: 0.9rem;
+  }
+}
+
+/* ===== ADDITIONAL REFINEMENTS ===== */
+@media (min-width: 1024px) {
+  .country-card {
+    padding: 2.5rem;
+  }
+
+  .section-heading {
+    font-size: 2rem;
+  }
+}
+
+/* accessibility & interactive touches */
+a:focus-visible, button:focus-visible, .card:focus-within {
+  outline: 3px solid var(--primary-red);
+  outline-offset: 2px;
+}
+
+.value, .label {
+  transition: var(--transition);
+}

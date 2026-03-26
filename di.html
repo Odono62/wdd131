@@ -3,42 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="author" content="Odono John jachukwu">
-  <meta name="description" content="Discover Madagascar: geography, culture, and current weather insights">
-  <title>country-page</title>
+  <meta name="author" content="Rubia Magdalena Francesco">
+  <meta name="description" content="Discover Nigeria: geography, culture, and current weather insights">
+  <title>Nigeria | Land of the Nigers</title>
   <link rel="stylesheet" href="styles/place.css">
   <script src="scripts/place.js" defer></script>
 </head>
 <body>
+  <!-- ✅ HEADER (contains h1) -->
   <header class="page-header">
-    <h1>nigeria</h1>
-  </header>
-
-  <main class="country-main">
-    <!-- Hero image with responsive srcset (WebP + fallback) -->
-    <figure class="hero-image">
-      <picture>
-        <!-- WebP sources with different sizes -->
-        <source 
-          srcset="images/place-800.webp 800w, images/place-1200.webp 1200w"
-          sizes="(max-width: 768px) 100vw, 80vw"
-          type="image/webp">
-        <!-- Fallback JPEG sources -->
-        <source 
-          srcset="images/place-800.jpg 800w, images/place-1200.jpg 1200w"
-          sizes="(max-width: 768px) 100vw, 80vw"
-          type="image/jpeg">
-        <!-- Default img (required) -->
-        <img 
-          src="images/place-800.jpg" 
-          alt="Satellite view of Madagascar, showing lush forests and unique geography"
-          loading="eager">
-      </picture>
-      <figcaption class="img-caption">sitelite view of nigeria market</figcaption>
-    </figure>
-    <hr>
+    <h1>Nigeria</h1>
     <p>
-      Nigeria is one of the most important countries in Africa, known for its large population, rich culture, and abundant natural resources. Officially called the Federal Republic of Nigeria, it is located in West Africa and shares borders with countries like Niger, Chad, Cameroon, and Benin. With over 200 million people, Nigeria is the most populous country in Africa and one of the most diverse nations in the world.
+
+Nigeria is one of the most important countries in Africa, known for its large population, rich culture, and abundant natural resources. Officially called the Federal Republic of Nigeria, it is located in West Africa and shares borders with countries like Niger, Chad, Cameroon, and Benin. With over 200 million people, Nigeria is the most populous country in Africa and one of the most diverse nations in the world.
 
 One of the most remarkable features of Nigeria is its cultural diversity. The country is home to more than 250 ethnic groups, with the major ones being the Hausa, Igbo, and Yoruba. Each group has its own language, traditions, food, and clothing. This diversity makes Nigeria culturally rich but also presents challenges in terms of unity and governance. Despite these differences, Nigerians share a strong sense of identity and pride in their country.
 
@@ -53,29 +30,53 @@ Despite its strengths, Nigeria faces several challenges. Issues such as poverty,
 In conclusion, Nigeria is a country of great diversity, resilience, and potential. While it faces significant challenges, its strengths and opportunities make it a nation with a promising future. With proper leadership, unity, and development strategies, Nigeria can achieve greater progress and improve the lives of its people.
 
     </p>
-    </p>
+  </header>
 
-    <!-- Two‑column grid: Data and Weather (mobile: stacked, wide: side‑by‑side) -->
+  <!-- ✅ MAIN (between header and footer) -->
+  <main class="country-main">
+    <!-- Responsive image with WebP + srcset (picture element) -->
+    <figure class="hero-image">
+      <picture>
+        <!-- WebP sources with srcset for responsive sizes -->
+        <source 
+          srcset="images/place.webp, 800w, 1200w"
+          sizes="(max-width: 768px) 100vw, 80vw"
+          type="image/webp">
+        <!-- Fallback JPEG with srcset -->
+        <source 
+          srcset="images/place.jpg"
+          sizes="(max-width: 768px) 100vw, 80vw"
+          type="image/jpeg">
+        <!-- Default img with alt (required) -->
+        <img 
+          src="images/place.jpg" 
+          alt="Satellite view of Madagascar, showing lush forests and unique geography"
+          loading="eager">
+      </picture>.
+      <figcaption class="img-caption">the flag of nigeria</figcaption>
+    </figure>
+
+    <!-- Two‑column grid for data and weather -->
     <div class="info-grid">
       <!-- Data section -->
       <section class="data-section card">
         <h2>📊 Data</h2>
         <div class="data-list">
           <div class="data-item"><span class="label">Area:</span><span class="value">587,041 sq km</span></div>
-          <div class="data-item"><span class="label">Population:</span><span class="value">200,000,000</span></div>
-          <div class="data-item"><span class="label">Capital:</span><span class="value">FCT ABUJA</span></div>
-          <div class="data-item"><span class="label">Languages:</span><span class="value">igbo, yoruba, hausa</span></div>
-          <div class="data-item"><span class="label">Currency:</span><span class="value">naira</span></div>
-          <div class="data-item"><span class="label">Time Zone:</span><span class="value">UTC+1</span></div>
-          <div class="data-item"><span class="label">Calling Code:</span><span class="value">+234</span></div>
-          <div class="data-item"><span class="label">Internet TLD:</span><span class="value">.ng</span></div>
+          <div class="data-item"><span class="label">Population:</span><span class="value">27,691,218</span></div>
+          <div class="data-item"><span class="label">Capital:</span><span class="value">Antananarivo</span></div>
+          <div class="data-item"><span class="label">Languages:</span><span class="value">Malagasy, French</span></div>
+          <div class="data-item"><span class="label">Currency:</span><span class="value">Malagasy Ariary (MGA)</span></div>
+          <div class="data-item"><span class="label">Time Zone:</span><span class="value">UTC+3 (EAT)</span></div>
+          <div class="data-item"><span class="label">Calling Code:</span><span class="value">+261</span></div>
+          <div class="data-item"><span class="label">Internet TLD:</span><span class="value">.mg</span></div>
         </div>
       </section>
 
       <!-- Weather section with inline SVG icon -->
       <section class="weather-section card">
         <h2>
-          <!-- SVG icon (scalable, meets SVG requirement) -->
+          <!-- SVG icon (scalable) -->
           <svg class="weather-svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
             <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7z"/>
             <circle cx="12" cy="12" r="2.5"/>
@@ -92,9 +93,10 @@ In conclusion, Nigeria is a country of great diversity, resilience, and potentia
     </div>
   </main>
 
+  <!-- ✅ FOOTER (after main) -->
   <footer class="page-footer">
     <div class="footer-content">
-      <p>© <span id="current-year"></span> 🛈Odono John Jachukwu🛈 Nigeria</p>
+      <p>© <span id="current-year"></span> 🛈 odono john jachukwu🛈 nigeria</p>
       <p class="last-modify">Last Modification: <span id="last-modified"></span></p>
     </div>
   </footer>

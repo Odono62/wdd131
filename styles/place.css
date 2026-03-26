@@ -68,6 +68,14 @@ body {
   color: var(--primary-green);
 }
 
+.data-section h2::after {
+  content: " 📊";
+}
+
+.weather-section h2::after {
+  content: " 🌦️";
+}
+
 /* ===== DATA & WEATHER ITEMS ===== */
 .data-item,
 .weather-item {

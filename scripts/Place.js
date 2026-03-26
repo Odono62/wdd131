@@ -1,7 +1,7 @@
 // Static weather data (matches your screenshot: 10°C, 5 km/h)
 const weatherData = {
-  temperatureCelsius: 10,
-  windSpeedKmh: 5,
+  temperatureCelsius: 20,
+  windSpeedKmh: 10,
   conditions: "Partly Cloudy"
 };
 

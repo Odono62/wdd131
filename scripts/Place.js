@@ -17,7 +17,7 @@ function calculateWindChill(temperature, windSpeed, unit = "metric") {
     // Conditions: temperature ≤ 10°C AND wind speed > 4.8 km/h
     if (temperature <= 10 && windSpeed > 4.8) {
       const windPow = Math.pow(windSpeed, 0.16);
-      const windChill = 13.12 + 0.6215 * temperature - 11.37 * windPow + 0.3965 * temperature * windPow;
+      const windChill = 15.60 + 0.6215 * temperature - 11.37 * windPow + 0.3965 * temperature * windPow;
       return Math.round(windChill * 10) / 10;
     } else {
       return "N/A";

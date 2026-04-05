@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Filtered Temple Album - dynamically generated temple cards">
+    <meta name="author" content="Rubia Magdalena Francesco">
+    <title>Filtered Temple Album</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- CSS: mobile first -->
+    <link rel="stylesheet" href="styles/filtered-temples.css">
+    <link rel="stylesheet" href="styles/filtered-temples-large.css">
+    <!-- JavaScript deferred -->
+    <script src="scripts/filtered-temples.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="site-title">Temple Album</div>
+            <button id="hamburger" class="hamburger" aria-label="Menu">☰</button>
+        </div>
+        <nav id="nav-menu" class="nav-menu">
+            <ul>
+                <li><a href="#" id="nav-home">Home</a></li>
+                <li><a href="#" id="nav-old">Old</a></li>
+                <li><a href="#" id="nav-new">New</a></li>
+                <li><a href="#" id="nav-large">Large</a></li>
+                <li><a href="#" id="nav-small">Small</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1 id="filter-heading">Home</h1>
+        <div class="gallery" id="temple-gallery">
+            <!-- Dynamic temple cards will be inserted here -->
+        </div>
+    </main>
+
+    <footer>
+        <p>
+            ©<span id="currentyear"></span> © <a href="#">Rubia Magdalena Francesco</a> © Madagascar<br>
+            Last Modification: <span id="lastModified"></span>
+        </p>
+    </footer>
+</body>
+</html>

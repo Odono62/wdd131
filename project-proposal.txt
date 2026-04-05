@@ -1,0 +1,19 @@
+
+
+                Subject
+Personal Finance & Beginner Business Guide for Students in Nigeria
+
+                Content
+This website will provide simple and practical information to help students understand money management and how to start a small business. It will include:
+
+Introduction to personal finance (saving, budgeting, avoiding debt)
+Basics of starting a small business (ideas, planning, and capital)
+Common mistakes beginners make in business and how to avoid them
+Simple business ideas students can start in Nigeria
+Tools such as a budget calculator and profit estimator
+
+            Reason
+I chose this topic because I am interested in improving my 
+financial knowledge and learning how to build a profitable business.
+Many students in Nigeria want to make money but lack guidance on managing finances and starting a business. 
+This website will help provide simple and useful information while also helping me practice my web development skills.

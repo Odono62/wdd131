@@ -1,0 +1,45 @@
+@media screen and (min-width: 640px) {
+    .hamburger {
+        display: none;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    .header-top {
+        width: auto;
+    }
+
+    .nav-menu {
+        display: flex !important;
+    }
+
+    .nav-menu ul {
+        display: flex;
+        gap: 1rem;
+        margin: 0;
+        list-style: none;
+    }
+
+    .nav-menu li {
+        margin: 0;
+    }
+
+    .nav-menu a {
+        padding: 0.5rem 1rem;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .gallery {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

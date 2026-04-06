@@ -1,4 +1,4 @@
-// product array from assignment spec (id + name)
+// product array from assignment (id + name)
 const products = [
   { id: "fc-1888", name: "flux capacitor" },
   { id: "fc-2050", name: "power laces" },
@@ -7,25 +7,23 @@ const products = [
   { id: "jj-1969", name: "warp equalizer" }
 ];
 
-// populate product select dropdown
+// Populate product select dropdown
 function populateProductSelect() {
   const selectElem = document.getElementById("productName");
   if (!selectElem) return;
-
   // remove existing options except the disabled placeholder
   while (selectElem.options.length > 1) {
     selectElem.remove(1);
   }
-
   products.forEach(product => {
     const option = document.createElement("option");
-    option.value = product.id;       // id as value
-    option.textContent = product.name; // name as display
+    option.value = product.id;
+    option.textContent = product.name;
     selectElem.appendChild(option);
   });
 }
 
-// set last modified date in footer
+// Set last modified date in footer
 function setLastModified() {
   const modSpan = document.getElementById("lastModified");
   if (modSpan) {
@@ -35,7 +33,7 @@ function setLastModified() {
   }
 }
 
-// display current review count on form page (optional, but shows storage)
+// Update review counter display from localStorage
 function updateReviewCounterDisplay() {
   const counterSpan = document.getElementById("totalReviewsCount");
   if (counterSpan) {
@@ -45,7 +43,7 @@ function updateReviewCounterDisplay() {
   }
 }
 
-// optional: set max date to today for installation date
+// Set max date for installation date to today
 function setDateConstraints() {
   const dateInput = document.getElementById("installDate");
   if (dateInput) {
@@ -54,13 +52,10 @@ function setDateConstraints() {
   }
 }
 
-// run on page load
+// Run on page load
 document.addEventListener("DOMContentLoaded", () => {
   populateProductSelect();
   setLastModified();
   updateReviewCounterDisplay();
   setDateConstraints();
-
-  // ensure form has GET method and target review.html (already in HTML)
-  // additional client-side validation is graceful but HTML5 handles required
 });

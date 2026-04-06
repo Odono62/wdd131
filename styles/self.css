@@ -1,15 +1,8 @@
+html {
+        font-size: 30px;
+    }
+
 body {
-    font-size: 48px;
-    font-family: 'Courier New', Courier, monospace;
-    background: rgba(102, 71, 15, 0);
-    color: blanchedalmond;
-}
-
-h1, h2 {
-    color: red;
-}
-
-
-p {
-    color: rgb(19, 5, 5);
-}
+        background-color: black;
+        color: aliceblue;
+    }

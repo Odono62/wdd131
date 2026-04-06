@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Review submitted | GearLabs</title>
+  <style>
+    /* same design system as main page, compact but consistent */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      background: linear-gradient(145deg, #eef2f7 0%, #dce3ec 100%);
+      padding: 2rem 1rem;
+      min-height: 100vh;
+      color: #0f172a;
+    }
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .confirmation-card {
+      background: white;
+      border-radius: 28px;
+      padding: 2rem 2rem 2rem 2rem;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    .check-icon {
+      font-size: 4rem;
+      background: #e67e22;
+      width: 80px;
+      height: 80px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 100px;
+      color: white;
+      margin-bottom: 1.2rem;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: #1e3c5c;
+    }
+    .review-count-badge {
+      background: #fff4e6;
+      padding: 0.5rem 1rem;
+      border-radius: 60px;
+      display: inline-block;
+      margin: 1rem 0;
+      font-weight: 600;
+    }
+    .submitted-data {
+      background: #f8fafc;
+      border-radius: 20px;
+      padding: 1.2rem;
+      text-align: left;
+      margin: 1.5rem 0;
+      border-left: 5px solid #e67e22;
+    }
+    .submitted-data p {
+      margin: 0.5rem 0;
+      word-break: break-word;
+    }
+    .button-group {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      background: #1e3c5c;
+      color: white;
+      padding: 0.7rem 1.4rem;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.2s;
+      display: inline-block;
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #1e3c5c;
+      color: #1e3c5c;
+    }
+    .btn-outline:hover {
+      background: #eef2ff;
+    }
+    .btn:hover {
+      background: #0f2b44;
+      transform: translateY(-2px);
+    }
+    footer {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #4b5563;
+    }
+    @media (max-width: 550px) {
+      .confirmation-card { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="confirmation-card">
+    <div class="check-icon">✓</div>
+    <h1>Thank you for your review!</h1>
+    <p>Your feedback makes our community stronger.</p>
+
+    <div class="review-count-badge" id="counterDisplay">
+      🌟 Total reviews submitted: <span id="reviewCountNumber">0</span>
+    </div>
+
+    <div class="submitted-data" id="submittedSummary">
+      <strong>📋 Review summary</strong>
+      <div id="submittedFields"></div>
+    </div>
+
+    <div class="button-group">
+      <a href="form.html" class="btn">✍️ Write another review</a>
+      <a href="form.html" class="btn btn-outline">🏠 Back to form</a>
+    </div>
+  </div>
+  <footer>
+    <p>© 2025 🐼 Rubia Magdalena Francesco 🐼 · Madagascar</p>
+    <p>Your voice matters — each review helps improve products</p>
+  </footer>
+</div>
+
+<script>
+  (function() {
+    // ---------- LOCALSTORAGE COUNTER LOGIC ----------
+    // Increment only if this page was reached via form submission (GET parameters present)
+    const urlParams = new URLSearchParams(window.location.search);
+    const hasProductParam = urlParams.has('productName');  // required field exists
+
+    let currentCount = localStorage.getItem('productReviewCount');
+    currentCount = currentCount ? parseInt(currentCount) : 0;
+
+    if (hasProductParam) {
+      // Increment counter because a valid form submission occurred
+      currentCount++;
+      localStorage.setItem('productReviewCount', currentCount);
+    }
+
+    // update counter display
+    const countSpan = document.getElementById('reviewCountNumber');
+    if (countSpan) countSpan.textContent = currentCount;
+
+    // display submitted fields nicely
+    const submittedDiv = document.getElementById('submittedFields');
+    if (submittedDiv && hasProductParam) {
+      let html = '';
+      
+      // product name (value is product id, but we show readable product name)
+      const productId = urlParams.get('productName');
+      // we can map id -> name using product array (embedded here for clarity)
+      const productsMap = [
+        { id: "fc-1888", name: "flux capacitor" },
+        { id: "fc-2050", name: "power laces" },
+        { id: "fs-1987", name: "time circuits" },
+        { id: "ac-2000", name: "low voltage reactor" },
+        { id: "jj-1969", name: "warp equalizer" }
+      ];
+      const foundProduct = productsMap.find(p => p.id === productId);
+      const productDisplayName = foundProduct ? foundProduct.name : productId;
+      html += `<p><strong>📦 Product:</strong> ${productDisplayName}</p>`;
+
+      // rating
+      const ratingVal = urlParams.get('rating');
+      if (ratingVal) {
+        const stars = '★'.repeat(parseInt(ratingVal)) + '☆'.repeat(5-parseInt(ratingVal));
+        html += `<p><strong>⭐ Rating:</strong> ${stars} (${ratingVal}/5)</p>`;
+      } else {
+        html += `<p><strong>⭐ Rating:</strong> not provided</p>`;
+      }
+
+      // installation date
+      const installDate = urlParams.get('installDate');
+      if (installDate) html += `<p><strong>📅 Installation date:</strong> ${installDate}</p>`;
+
+      // useful features (checkboxes can have multiple values with same name)
+      const features = urlParams.getAll('feature');
+      if (features.length > 0) {
+        html += `<p><strong>✅ Useful features:</strong> ${features.join(', ')}</p>`;
+      } else {
+        html += `<p><strong>✅ Useful features:</strong> none selected</p>`;
+      }
+
+      // written review
+      const writtenReview = urlParams.get('review');
+      if (writtenReview && writtenReview.trim() !== "") {
+        html += `<p><strong>✍️ Written review:</strong> “${escapeHtml(writtenReview)}”</p>`;
+      } else {
+        html += `<p><em>No written review provided.</em></p>`;
+      }
+
+      // user name
+      const userName = urlParams.get('username');
+      if (userName && userName.trim() !== "") {
+        html += `<p><strong>👤 Name:</strong> ${escapeHtml(userName)}</p>`;
+      }
+
+      submittedDiv.innerHTML = html;
+    } else if (submittedDiv) {
+      // direct access to review.html without form data -> just show info
+      submittedDiv.innerHTML = `<p>✨ No new review data submitted. Use the form to share your experience.</p>`;
+    }
+
+    // helper to prevent XSS
+    function escapeHtml(str) {
+      return str.replace(/[&<>]/g, function(m) {
+        if (m === '&') return '&amp;';
+        if (m === '<') return '&lt;';
+        if (m === '>') return '&gt;';
+        return m;
+      }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+        return c;
+      });
+    }
+  })();
+</script>
+</body>
+</html>

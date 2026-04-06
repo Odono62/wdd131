@@ -1,122 +1,495 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Product Review | Quality Gear</title>
-    <meta name="description" content="Submit your honest product review to help our community make informed decisions.">
-    <meta name="author" content="odono john jachukwu">
-    <link rel="stylesheet" href="styles/form.css">
-    <script src="scripts/form.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Review | Quality Gear</title>
+  <meta name="description" content="Submit your honest product review to help our community make informed decisions. Rate features, installation date, and more.">
+  <meta name="author" content="odono john jachukwu">
+  <style>
+    /* ----------------------------------
+       Global reset & variables
+    ---------------------------------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #1e3c5c;
+      --primary-light: #2c5282;
+      --accent: #e67e22;
+      --accent-hover: #d35400;
+      --gray-bg: #f8fafc;
+      --card-white: #ffffff;
+      --border-light: #e2e8f0;
+      --text-dark: #0f172a;
+      --text-muted: #475569;
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.08);
+      --radius: 20px;
+      --radius-sm: 14px;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+      background: linear-gradient(145deg, #eef2f7 0%, #dce3ec 100%);
+      color: var(--text-dark);
+      line-height: 1.5;
+      padding: 2rem 1rem;
+      min-height: 100vh;
+    }
+
+    .page-container {
+      max-width: 880px;
+      margin: 0 auto;
+      background: transparent;
+    }
+
+    /* header */
+    header {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .brand-icon {
+      font-size: 2.2rem;
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));
+    }
+
+    header h1 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), #2b6c8f);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.3px;
+    }
+
+    .tagline {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border-light);
+      display: inline-block;
+      padding-top: 0.4rem;
+      margin-top: 0.4rem;
+    }
+
+    /* cards */
+    .form-card, .stats-card {
+      background: var(--card-white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      padding: 1.8rem 2rem;
+      margin-bottom: 2rem;
+      transition: all 0.2s ease;
+      border: 1px solid rgba(255,255,255,0.5);
+    }
+
+    .form-card h2 {
+      font-size: 1.7rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      color: var(--primary);
+    }
+
+    .form-intro {
+      color: var(--text-muted);
+      border-left: 3px solid var(--accent);
+      padding-left: 1rem;
+      margin: 0.5rem 0 1.8rem 0;
+      font-size: 0.9rem;
+    }
+
+    /* form groups */
+    .form-group {
+      margin-bottom: 1.6rem;
+    }
+
+    label, .group-label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--primary-light);
+      font-size: 0.95rem;
+    }
+
+    .required-star {
+      color: var(--accent);
+      font-size: 1.1rem;
+      margin-left: 0.1rem;
+    }
+
+    .optional-badge {
+      background: #eef2ff;
+      font-size: 0.7rem;
+      font-weight: normal;
+      padding: 0.2rem 0.6rem;
+      border-radius: 30px;
+      margin-left: 0.6rem;
+      color: var(--primary);
+      vertical-align: middle;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+      border: 1.5px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      background: white;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.2);
+    }
+
+    .field-hint {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+      display: block;
+    }
+
+    /* rating stars (radio group) - each radio has own label and id */
+    .rating-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      background: var(--gray-bg);
+      padding: 0.8rem 1rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-light);
+    }
+
+    .rating-option {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-weight: 500;
+      cursor: pointer;
+      background: white;
+      padding: 0.3rem 0.9rem;
+      border-radius: 40px;
+      border: 1px solid var(--border-light);
+      transition: 0.1s;
+    }
+
+    .rating-option:hover {
+      background: #fff4e6;
+      border-color: var(--accent);
+    }
+
+    .rating-option input[type="radio"] {
+      width: auto;
+      margin-right: 0.3rem;
+      accent-color: var(--accent);
+      transform: scale(1.05);
+    }
+
+    /* checkbox group - each checkbox has id and associated label */
+    .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      background: var(--gray-bg);
+      padding: 0.8rem 1rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-light);
+    }
+
+    .checkbox-option {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .checkbox-option input {
+      width: 1.2rem;
+      height: 1.2rem;
+      accent-color: var(--primary);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    /* submit button */
+    .form-actions {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .submit-btn {
+      background: var(--accent);
+      border: none;
+      padding: 0.9rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: white;
+      border-radius: 60px;
+      cursor: pointer;
+      transition: 0.2s;
+      width: 100%;
+      max-width: 260px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      font-family: inherit;
+      letter-spacing: 0.5px;
+    }
+
+    .submit-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(211, 84, 0, 0.25);
+    }
+
+    /* stats card */
+    .stats-card {
+      background: #ffffffdd;
+      backdrop-filter: blur(2px);
+      text-align: center;
+      padding: 0.9rem;
+      font-size: 0.9rem;
+      border-left: 5px solid var(--accent);
+    }
+
+    #totalReviewsCount {
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--accent);
+      background: #fef3e8;
+      padding: 0.1rem 0.5rem;
+      border-radius: 40px;
+      display: inline-block;
+    }
+
+    /* footer */
+    footer {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #4b5563;
+      border-top: 1px solid var(--border-light);
+      padding-top: 1.5rem;
+    }
+
+    .footer-content p {
+      margin: 0.2rem 0;
+    }
+
+    /* responsive */
+    @media (max-width: 640px) {
+      body {
+        padding: 1rem;
+      }
+      .form-card, .stats-card {
+        padding: 1.2rem;
+      }
+      .rating-group, .checkbox-group {
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+      .rating-option, .checkbox-option {
+        width: 100%;
+      }
+      .submit-btn {
+        max-width: 100%;
+      }
+      header h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="page-container">
-        <header>
-            <div class="brand">
-                <span class="brand-icon">⚡</span>
-                <h1>GearLabs Reviews</h1>
-            </div>
-            <p class="tagline">honest feedback · better products</p>
-        </header>
-
-        <main>
-            <div class="form-card">
-                <h2>✍️ Write a product review</h2>
-                <p class="form-intro">Your insights help our community. All fields marked with <span class="required-star">*</span> are required.</p>
-
-                <form id="reviewForm" action="review.html" method="get" novalidate>
-                    <!-- PRODUCT NAME (dynamic select) -->
-                    <div class="form-group">
-                        <label for="productName">Product name <span class="required-star">*</span></label>
-                        <select id="productName" name="productName" required>
-                            <option value="" disabled selected>— Select a product —</option>
-                        </select>
-                        <span class="field-hint">Which item are you reviewing?</span>
-                    </div>
-
-                    <!-- OVERALL RATING (star radio group) -->
-                    <div class="form-group">
-                        <label class="group-label">Overall rating <span class="required-star">*</span></label>
-                        <div class="rating-group">
-                            <label class="rating-option">
-                                <input type="radio" name="rating" value="1" required> ★☆☆☆☆ (1)
-                            </label>
-                            <label class="rating-option">
-                                <input type="radio" name="rating" value="2"> ★★☆☆☆ (2)
-                            </label>
-                            <label class="rating-option">
-                                <input type="radio" name="rating" value="3"> ★★★☆☆ (3)
-                            </label>
-                            <label class="rating-option">
-                                <input type="radio" name="rating" value="4"> ★★★★☆ (4)
-                            </label>
-                            <label class="rating-option">
-                                <input type="radio" name="rating" value="5"> ★★★★★ (5)
-                            </label>
-                        </div>
-                        <span class="field-hint">Select 1–5 stars</span>
-                    </div>
-
-                    <!-- DATE OF INSTALLATION -->
-                    <div class="form-group">
-                        <label for="installDate">Date of installation <span class="required-star">*</span></label>
-                        <input type="date" id="installDate" name="installDate" required>
-                        <span class="field-hint">When did you start using this product?</span>
-                    </div>
-
-                    <!-- USEFUL FEATURES (checkboxes) -->
-                    <div class="form-group">
-                        <label class="group-label">Useful features (check all that apply)</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-option">
-                                <input type="checkbox" name="feature" value="Durability"> Durability
-                            </label>
-                            <label class="checkbox-option">
-                                <input type="checkbox" name="feature" value="Ease of Use"> Ease of Use
-                            </label>
-                            <label class="checkbox-option">
-                                <input type="checkbox" name="feature" value="Performance"> Performance
-                            </label>
-                            <label class="checkbox-option">
-                                <input type="checkbox" name="feature" value="Design"> Design
-                            </label>
-                        </div>
-                        <span class="field-hint">What impressed you most?</span>
-                    </div>
-
-                    <!-- WRITTEN REVIEW (optional textarea) -->
-                    <div class="form-group">
-                        <label for="writtenReview">Written review <span class="optional-badge">optional</span></label>
-                        <textarea id="writtenReview" name="review" rows="4" placeholder="Share your experience, pros & cons, or any tip..."></textarea>
-                    </div>
-
-                    <!-- USER NAME (optional text) -->
-                    <div class="form-group">
-                        <label for="userName">Your name <span class="optional-badge">optional</span></label>
-                        <input type="text" id="userName" name="username" placeholder="e.g., Taylor, Alex, Jamie">
-                        <span class="field-hint">We’ll display this with your review</span>
-                    </div>
-
-                    <!-- SUBMIT BUTTON -->
-                    <div class="form-actions">
-                        <button type="submit" class="submit-btn">📝 Post review</button>
-                    </div>
-                </form>
-            </div>
-
-            <!-- dynamic review counter from localStorage (optional display) -->
-            <div class="stats-card" id="reviewStats">
-                <p>📊 <strong>Community impact</strong> · total reviews submitted: <span id="totalReviewsCount">0</span></p>
-            </div>
-        </main>
-
-        <footer>
-            <div class="footer-content">
-                <p>© 2026 🐼 Odono John Jachukwu 🐼 · Nigeria</p>
-                <p>Last modification: <span id="lastModified"></span></p>
-                <p class="footer-credit">Design for usability & clarity — every review counts</p>
-            </div>
-        </footer>
+<div class="page-container">
+  <header>
+    <div class="brand">
+      <span class="brand-icon">⚡</span>
+      <h1>GearLabs Reviews</h1>
     </div>
+    <p class="tagline">honest feedback · better products</p>
+  </header>
+
+  <main>
+    <div class="form-card">
+      <h2>✍️ Write a product review</h2>
+      <p class="form-intro">Your insights help our community. All fields marked with <span class="required-star">*</span> are required.</p>
+
+      <form id="reviewForm" action="review.html" method="get" novalidate>
+        <!-- PRODUCT NAME (dynamic select) -->
+        <div class="form-group">
+          <label for="productName">Product name <span class="required-star">*</span></label>
+          <select id="productName" name="productName" required>
+            <option value="" disabled selected>— Select a product —</option>
+          </select>
+          <span class="field-hint">Which item are you reviewing?</span>
+        </div>
+
+        <!-- OVERALL RATING (5 radio buttons, each with id, name="rating", required) -->
+        <div class="form-group">
+          <span class="group-label">Overall rating <span class="required-star">*</span></span>
+          <div class="rating-group">
+            <label class="rating-option" for="rating1">
+              <input type="radio" id="rating1" name="rating" value="1" required> ★☆☆☆☆ (1)
+            </label>
+            <label class="rating-option" for="rating2">
+              <input type="radio" id="rating2" name="rating" value="2" required> ★★☆☆☆ (2)
+            </label>
+            <label class="rating-option" for="rating3">
+              <input type="radio" id="rating3" name="rating" value="3" required> ★★★☆☆ (3)
+            </label>
+            <label class="rating-option" for="rating4">
+              <input type="radio" id="rating4" name="rating" value="4" required> ★★★★☆ (4)
+            </label>
+            <label class="rating-option" for="rating5">
+              <input type="radio" id="rating5" name="rating" value="5" required> ★★★★★ (5)
+            </label>
+          </div>
+          <span class="field-hint">Select 1–5 stars</span>
+        </div>
+
+        <!-- DATE OF INSTALLATION -->
+        <div class="form-group">
+          <label for="installDate">Date of installation <span class="required-star">*</span></label>
+          <input type="date" id="installDate" name="installDate" required>
+          <span class="field-hint">When did you start using this product?</span>
+        </div>
+
+        <!-- USEFUL FEATURES (4 checkboxes, each with id and label) -->
+        <div class="form-group">
+          <span class="group-label">Useful features (check all that apply)</span>
+          <div class="checkbox-group">
+            <label class="checkbox-option" for="featureDurability">
+              <input type="checkbox" id="featureDurability" name="feature" value="Durability"> Durability
+            </label>
+            <label class="checkbox-option" for="featureEase">
+              <input type="checkbox" id="featureEase" name="feature" value="Ease of Use"> Ease of Use
+            </label>
+            <label class="checkbox-option" for="featurePerformance">
+              <input type="checkbox" id="featurePerformance" name="feature" value="Performance"> Performance
+            </label>
+            <label class="checkbox-option" for="featureDesign">
+              <input type="checkbox" id="featureDesign" name="feature" value="Design"> Design
+            </label>
+          </div>
+          <span class="field-hint">What impressed you most?</span>
+        </div>
+
+        <!-- WRITTEN REVIEW (optional textarea) -->
+        <div class="form-group">
+          <label for="writtenReview">Written review <span class="optional-badge">optional</span></label>
+          <textarea id="writtenReview" name="review" rows="4" placeholder="Share your experience, pros & cons, or any tip..."></textarea>
+        </div>
+
+        <!-- USER NAME (optional text) -->
+        <div class="form-group">
+          <label for="userName">Your name <span class="optional-badge">optional</span></label>
+          <input type="text" id="userName" name="username" placeholder="e.g., Taylor, Alex, Jamie">
+          <span class="field-hint">We’ll display this with your review</span>
+        </div>
+
+        <!-- SUBMIT BUTTON -->
+        <div class="form-actions">
+          <button type="submit" class="submit-btn">📝 Post review</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- dynamic review counter from localStorage -->
+    <div class="stats-card" id="reviewStats">
+      <p>📊 <strong>Community impact</strong> · total reviews submitted: <span id="totalReviewsCount">0</span></p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>© 2025 🐼 Rubia Magdalena Francesco 🐼 · Madagascar</p>
+      <p>Last modification: <span id="lastModified"></span></p>
+      <p class="footer-credit">Design for usability & clarity — every review counts</p>
+    </div>
+  </footer>
+</div>
+
+<script>
+  // Product array from assignment (id + name)
+  const products = [
+    { id: "fc-1888", name: "flux capacitor" },
+    { id: "fc-2050", name: "power laces" },
+    { id: "fs-1987", name: "time circuits" },
+    { id: "ac-2000", name: "low voltage reactor" },
+    { id: "jj-1969", name: "warp equalizer" }
+  ];
+
+  // Populate product select dropdown
+  function populateProductSelect() {
+    const selectElem = document.getElementById("productName");
+    if (!selectElem) return;
+    // remove existing options except the disabled placeholder
+    while (selectElem.options.length > 1) {
+      selectElem.remove(1);
+    }
+    products.forEach(product => {
+      const option = document.createElement("option");
+      option.value = product.id;
+      option.textContent = product.name;
+      selectElem.appendChild(option);
+    });
+  }
+
+  // Set last modified date in footer
+  function setLastModified() {
+    const modSpan = document.getElementById("lastModified");
+    if (modSpan) {
+      const now = new Date();
+      const formatted = `${now.getMonth()+1}/${now.getDate()}/${now.getFullYear()} ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
+      modSpan.textContent = formatted;
+    }
+  }
+
+  // Update review counter display from localStorage
+  function updateReviewCounterDisplay() {
+    const counterSpan = document.getElementById("totalReviewsCount");
+    if (counterSpan) {
+      let count = localStorage.getItem("productReviewCount");
+      count = count ? parseInt(count) : 0;
+      counterSpan.textContent = count;
+    }
+  }
+
+  // Set max date for installation date to today
+  function setDateConstraints() {
+    const dateInput = document.getElementById("installDate");
+    if (dateInput) {
+      const today = new Date().toISOString().split('T')[0];
+      dateInput.max = today;
+    }
+  }
+
+  // Run on page load
+  document.addEventListener("DOMContentLoaded", () => {
+    populateProductSelect();
+    setLastModified();
+    updateReviewCounterDisplay();
+    setDateConstraints();
+  });
+</script>
 </body>
 </html>

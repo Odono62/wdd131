@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A website that teaches students in Nigeria how to manage money and start a small business.">
+<meta name="author" content="odono john jachukwu">
+<title>Tools</title>
+<link rel="stylesheet" href="styles/business.css">
+<script src="scripts/business.js" defer></script>
+</head>
+
+<body>
+
+<header>
+  <h1>Tools & Contact</h1>
+  <button id="menu">☰</button>
+  <nav class="navigation">
+    <a href="index.html">Home</a>
+    <a href="finance.html">Finance</a>
+    <a href="business.html">Business</a>
+    <a href="tools.html">Tools</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- BUDGET CALCULATOR -->
+  <section>
+    <h2>Budget Calculator</h2>
+
+    <label for="income">Income:</label>
+    <input type="number" id="income" required>
+
+    <label for="expenses">Expenses:</label>
+    <input type="number" id="expenses" required>
+
+    <button id="calculate">Calculate</button>
+
+    <p id="result"></p>
+  </section>
+
+  <!-- FORM (REQUIRED) -->
+  <section>
+    <h2>Contact / Feedback Form</h2>
+
+    <form id="contactForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+
+      <label for="message">Message:</label>
+      <textarea id="message" required></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <p id="formOutput"></p>
+  </section>
+
+</main>
+
+<footer>
+  <p>&copy; <span id="year"></span> odono john jachukwu</p>
+  <a href="references.html">References</a>
+</footer>
+
+</body>
+</html>

@@ -7,7 +7,6 @@ const products = [
   { id: "jj-1969", name: "warp equalizer" }
 ];
 
-// Populate product select dropdown
 function populateProductSelect() {
   const selectElem = document.getElementById("productName");
   if (!selectElem) return;

@@ -273,6 +273,7 @@ footer {
 .footer-content p {
   margin: 0.2rem 0;
 }
+/* mobile view adjustments */
 
 @media (max-width: 640px) {
   body {

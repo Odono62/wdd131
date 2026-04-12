@@ -24,8 +24,8 @@
       <h2>✍️ Write a product review</h2>
       <p class="form-intro">Your insights help our community. All fields marked with <span class="required-star">*</span> are required.</p>
 
-      <form id="reviewForm" action="review.html" method="get" novalidate>
-      
+      <form id="reviewForm" action="review.html" method="get">
+        <!-- PRODUCT NAME (dynamic select) -->
         <div class="form-group">
           <label for="productName">Product name <span class="required-star">*</span></label>
           <select id="productName" name="productName" required>
@@ -34,9 +34,9 @@
           <span class="field-hint">Which item are you reviewing?</span>
         </div>
 
-        <!-- OVERALL RATING (5 radio buttons, each with id, name="rating", required) -->
-        <div class="form-group">
-          <span class="group-label">Overall rating <span class="required-star">*</span></span>
+        <!-- OVERALL RATING (5 radio buttons inside fieldset for proper grouping) -->
+        <fieldset class="form-group">
+          <legend class="group-label">Overall rating <span class="required-star">*</span></legend>
           <div class="rating-group">
             <label class="rating-option" for="rating1">
               <input type="radio" id="rating1" name="rating" value="1" required> ★☆☆☆☆ (1)
@@ -55,7 +55,7 @@
             </label>
           </div>
           <span class="field-hint">Select 1–5 stars</span>
-        </div>
+        </fieldset>
 
         <!-- DATE OF INSTALLATION -->
         <div class="form-group">
@@ -64,7 +64,7 @@
           <span class="field-hint">When did you start using this product?</span>
         </div>
 
-        <!-- USEFUL FEATURES (4 checkboxes, each with id and label) -->
+        <!-- USEFUL FEATURES (4 checkboxes) -->
         <div class="form-group">
           <span class="group-label">Useful features (check all that apply)</span>
           <div class="checkbox-group">
@@ -84,13 +84,13 @@
           <span class="field-hint">What impressed you most?</span>
         </div>
 
-
+        <!-- WRITTEN REVIEW (optional) -->
         <div class="form-group">
           <label for="writtenReview">Written review <span class="optional-badge">optional</span></label>
           <textarea id="writtenReview" name="review" rows="4" placeholder="Share your experience, pros & cons, or any tip..."></textarea>
         </div>
 
-        <!-- USER NAME (optional text) -->
+        <!-- USER NAME (optional) -->
         <div class="form-group">
           <label for="userName">Your name <span class="optional-badge">optional</span></label>
           <input type="text" id="userName" name="username" placeholder="e.g., Taylor, Alex, Jamie">
@@ -104,15 +104,14 @@
       </form>
     </div>
 
-    <!-- dynamic review counter from localStorage -->
-    <div class="stats-card" id="reviewStats">
+    <div class="stats-card">
       <p>📊 <strong>Community impact</strong> · total reviews submitted: <span id="totalReviewsCount">0</span></p>
     </div>
   </main>
 
   <footer>
     <div class="footer-content">
-      <p>© 2026 🐼 Odono John Jachukwu 🐼 · Nigeria</p>
+      <p>© 2025 🐼 Rubia Magdalena Francesco 🐼 · Madagascar</p>
       <p>Last modification: <span id="lastModified"></span></p>
       <p class="footer-credit">Design for usability & clarity — every review counts</p>
     </div>
